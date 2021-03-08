@@ -1,0 +1,19 @@
+#!/bin/bash
+if [ "$DEPLOYMENT_GROUP_NAME" == "abhi-competitors-analysis-deploy-group" ]
+then
+    #tar -zxvf /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/abhi-competitors-analysis.tar.gz
+	#rm -rf /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/abhi-competitors-analysis.tar.gz
+	
+    cd /var/www/html/competition-analysis/
+    tar -zcvf competition-analysis-$DATE.tgz competition-analysis
+    mv *.tgz /home/centos/backup
+
+elif [ "$DEPLOYMENT_GROUP_NAME" == "abhi-competitors-analysis-deploy-group-production"]
+then
+    #tar -zxvf /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/abhi-competitors-analysis.tar.gz
+	#rm -rf /opt/codedeploy-agent/deployment-root/$DEPLOYMENT_GROUP_ID/$DEPLOYMENT_ID/deployment-archive/abhi-competitors-analysis.tar.gz
+	
+    cd /var/www/html/competition-analysis/
+    tar -zcvf competition-analysis-$DATE.tgz competition-analysis
+    mv *.tgz /home/centos/backup
+fi

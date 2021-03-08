@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="title" content="Trains - Abhibus.com">
+	<meta name="keywords" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Abhibus Hotels">
+	<title>Welcome to Abhibus - abhibus.com</title>
+
+	<!-- Bootstrap core CSS -->
+	<!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+	<link href="{{ url_for('static', filename='css/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Open Sans Font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="{{ url_for('static', filename='css/search.css') }}" rel="stylesheet">
+
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+	<link rel="shortcut icon" href="favicon.ico">
+
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color:#efefef;">
+		<div class="container">
+			<div class="navbar-brand">
+				<a href=""><img src="{{ url_for('static', filename='img/logo.png') }}" alt="abhibus.com" height="55px"></a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Page Content -->
+	<section class="py-4" style="min-height: 800px;">
+		<div class="container">
+			<div class="row justify-content-center menu-section">
+				<div class="col-md-4 mt-4 align-items-center">
+					<h5 class="text-center mb-3">Menu</h5>
+					<div class="list-group">
+				  <a href="/top_routes" class="list-group-item list-group-item-action">Compare Top Routes</a>
+				  <a href="/route_search" class="list-group-item list-group-item-action">Live Route Search</a>
+				  <a href="/map_operators" class="list-group-item list-group-item-action">Map Operators</a>
+					 <a href="/update_operators" class="list-group-item list-group-item-action">Update Operators</a>
+				</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="navbar-light navbar " style="background-color: #efefef !important;">
+		<div class="container justify-content-md-center">
+			<ul class="nav justify-content-md-center py-3 text-center">
+				<li class="nav-item px-0 text-gray py-2">
+					Copyright @ Abhibus Service India Pvt. Ltd. All Right Reserved.
+				</li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="{{ url_for('static', filename='css/vendor/jquery/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='css/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			// Add minus icon for collapse element which is open by default
+			$(".collapse.show").each(function() {
+				$(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+			});
+
+			// Toggle plus minus icon on show hide of collapse element
+			$(".collapse").on('show.bs.collapse', function() {
+				$(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+			}).on('hide.bs.collapse', function() {
+				$(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+			});
+		});
+	</script>
+
+</body>
+
+</html>

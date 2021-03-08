@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="title" content="">
+<meta name="keywords" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="">
+<title>Search Page</title>
+
+<!-- Bootstrap core CSS -->
+<!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+<link href="{{url_for('static', filename='css/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+<!-- Open Sans Font -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<!-- <link href="css/search.css" rel="stylesheet"> -->
+<link href="{{ url_for('static', filename='css/search.css') }}" rel="stylesheet">
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+ <link rel="shortcut icon" href="favicon.ico">
+
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color:#efefef;">
+  <div class="container">
+	  <div class="navbar-brand">
+      <a href=""><img src="{{ url_for('static', filename='img/logo.png') }}" alt="abhibus.com" height="55px"></a>
+	  </div>
+  </div>
+</nav>
+
+<!-- Main Page Content -->
+	<div class="homeblock " style="background-color: #f7f7f7; min-height: 600px;">
+		<div class="container" >
+    		<div class="row justify-content-center no-gutters">
+		  		<div class="col-md-5">
+					<div class="card shadow-sm rounded-lg px-4">
+						<div class="card-body">
+								<form class="" action="/compare_operators_src_dest" method="post">
+						  <div class="text-center">
+								<h1 class="h3 mb-3 font-weight-normal">Select Route</h1>
+								</div>
+
+						  <div class="py-2">
+							  <label for="inputEmail" class="sr-only">Enter Source</label>
+
+							<!-- <input type="text" id="inputEmail" class="form-control form-control-lg rounded-0" placeholder="Enter Source" required> -->
+              	<input type="text" class="form-control" placeholder="Source" id="source" name="source">
+                <!-- <datalist id="source">
+                  {% for each in cities:%}
+                  <option value={{ each }}> </option>
+                  {% endfor %}
+                </datalist> -->
+							</div>
+						  <div class="py-2">
+								<label for="inputPassword" class="sr-only">Enter Destination</label>
+                <input type="text" id="dest" name="dest" class="form-control rounded-0" placeholder="Enter Destination" required>
+                <!-- <datalist id="dest">
+                  {% for each in cities:%}
+                  <option value={{ each }}> </option>
+                  {% endfor %}
+                </datalist> -->
+                </div>
+								<div class="row no-gutters">
+										<div class="col">
+											<div class="py-2 pr-1">
+											<label >To</label>
+											 <input id="datepicker" name = "datepicker"   format: 'dd/mm/yyyy' type="text" class="form-control">
+											</div>
+										</div>
+										<div class="col">
+											<div class="pl-1 py-2">
+											<label >From</label>
+											 <input id="datepicker2" name = "datepicker2"  format: 'dd/mm/yyyy'   type="text" class="form-control">
+											</div>
+										</div>
+								</div>
+
+						  <div class="py-3 text-center">
+			             <input type="submit" class="btn btn-primary" value="Submit">
+								</div>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+	<footer class="navbar-light navbar" style="background-color: #e8e8e8 !important;" >
+		<div class="container justify-content-md-center">
+			<ul class="nav justify-content-md-center py-3 text-center">
+		  <li class="nav-item px-0 text-gray py-2">
+			Copyright @ Abhibus Service India Pvt. Ltd. All Right Reserved.
+		  </li>
+		</ul>
+		</div>
+	</footer>
+
+<!-- Bootstrap core JavaScript -->
+
+<script src="{{ url_for('static', filename='js/jsfile.js') }}"></script>
+<script src="{{url_for('static', filename= 'vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{{ url_for('static', filename='js/gijgo.min.js') }}" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+<!-- <script src="{{ url_for('static', filename='jsfile.js') }}"></script> -->
+<!-- <script src="{{ url_for('static', filename='js/jsfile.js') }}"></script> -->
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+
+<script>
+			 $('#datepicker').datepicker({
+					 uiLibrary: 'bootstrap4'
+			 });
+			 $('#datepicker2').datepicker({
+					 uiLibrary: 'bootstrap4'
+			 });
+	 </script>
+
+</body>
+</html>

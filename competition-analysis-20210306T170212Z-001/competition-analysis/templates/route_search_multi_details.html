@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="title" content="Trains - Abhibus.com">
+  <meta name="keywords" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Abhibus Hotels">
+  <title>Welcome to Abhibus - abhibus.com</title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="{{ url_for('static', filename='css/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Open Sans Font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='css/search.css') }}" rel="stylesheet">
+
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  <link rel="shortcut icon" href="favicon.ico">
+
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color:#efefef;">
+    <div class="container">
+      <div class="navbar-brand">
+        <a href="/route_search"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="abhibus.com" height="55px"></a>
+      </div>
+      <ul class="nav nav-pills ml-auto main-nav-menu">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Overview</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/top_route_data">Compare Top Routes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/route_search">Realtime Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/map_operators">Map Operators</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/update_operators">Normalize Operators</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/rest_of_top_routes">Routes Data</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Page Content -->
+  <section class="py-4" style="min-height: 800px;">
+    <div class="container">
+      <div class="row">
+        <div class="col mt-4">
+          <div class="accordion" id="accordionExample">
+
+            <div class="card">
+
+              <div class="card-header" id="headingone">
+                <h2 class="mb-0">
+                  <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseone" aria-expanded="false">
+                    <h5><small><i class="fa fa-plus"></i></small> {{src}} - {{dest}}</h5>
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseone" class="collapse" aria-labelledby="headingone" data-parent="#accordionExample">
+                <div class="card-body border-bottom">
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      {%for i in lst_of_dates:%}
+                      <a class="nav-item nav-link" data-toggle="tab" href="#nav-home{{loop.index}}" role="tab" aria-controls="nav-home" aria-selected="true"><strong>{{i}}</strong></a>
+                      {%endfor%}
+                    </div>
+                  </nav>
+
+
+                  <div class="tab-content" id="nav-tabContent">
+                    {%for each_df in total_df:%}
+
+                    <div class="tab-pane fade show " id="nav-home{{loop.index}}" role="tabpanel" aria-labelledby="nav-tab{{loop.index}}">
+                      <div class="container mt-3">
+                        <div class="row">
+                          <div class="col-md-3 p-0">
+                            <div class="form-group">
+
+                              <!-- <select class="form-control" id="exampleFormControlSelect1">
+																	<option>Only</option>
+																	<option>2</option>
+																	<option>3</option>
+																	<option>4</option>
+																	<option>5</option>
+																</select> -->
+                            </div>
+
+
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <tbody>
+                            <table class="table table-bordered">
+                              <th style="width:76px;">S No</th>
+                              <th>Operator</th>
+                              <th>Abhibus Inventory</th>
+                              <th>Redbus Inventory</th>
+                              <th>Difference</th>
+                              <th>Abhibus Operation Time</th>
+                              <th>Redbus Operation Time</th>
+                              <th>Status</th>
+                              <th>Comments</th>
+                              {% for i,r in each_df.iterrows():%}
+                              <tr>
+                                <td scope="col">{{r[0]}}</td>
+                                <td scope="col">{{r[1]}}</td>
+                                <td scope="col">{{r[2]}}</td>
+                                <td scope="col">{{r[3]}}</td>
+                                <td scope="col">{{r[4]}}</td>
+                                <td scope="col">{{r[5]}}</td>
+                                <td scope="col">{{r[6]}}</td>
+                                {% if r[7] == "Exact": %}
+                                <td scope="col">
+                                  <img src="{{ url_for('static', filename='img/exact.png') }}" width="20px">
+                                </td>
+
+                                {% elif r[7] == "Missing": %}
+                                <td scope="col">
+                                  <img src="{{ url_for('static', filename='img/missing.png') }}" width="20px">
+                                </td>
+
+                                {% else: %}
+                                <td scope="col">
+                                  <img src="{{ url_for('static', filename='img/excess.png') }}" width="20px">
+                                </td>
+                                {% endif %}
+                                <td scope="col">{{r[8]}}</td>
+                              </tr>
+                              {% endfor %}
+
+                          </tbody>
+                          </table>
+                        </div>
+                        Total Operators - {{total_oprs_lst[loop.index-1]}}
+                        Total Buses - {{total_bus_lst[loop.index-1]}}
+
+                      </div>
+
+                    </div>
+                    {% endfor %}
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="navbar-light navbar " style="background-color: #efefef !important;">
+    <div class="container justify-content-md-center">
+      <ul class="nav justify-content-md-center py-3 text-center">
+        <li class="nav-item px-0 text-gray py-2">
+          Copyright @ Abhibus Service India Pvt. Ltd. All Right Reserved.
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for('static', filename='css/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='css/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Add minus icon for collapse element which is open by default
+      $(".collapse.show").each(function() {
+        $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+      });
+
+      // Toggle plus minus icon on show hide of collapse element
+      $(".collapse").on('show.bs.collapse', function() {
+        $(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+      }).on('hide.bs.collapse', function() {
+        $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+      });
+    });
+  </script>
+
+</body>
+
+</html>

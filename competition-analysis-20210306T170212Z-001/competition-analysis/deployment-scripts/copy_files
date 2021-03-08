@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ "$DEPLOYMENT_GROUP_NAME" == "abhi-competitors-analysis-deploy-group" ]
+then
+  DATE=$(date +"%d-%b-%Y")
+  #cd /var/www/html/competition-analysis/
+  
+elif [ "$DEPLOYMENT_GROUP_NAME" == "abhi-competitors-analysis-deploy-group-production"]
+then
+  DATE=$(date +"%d-%b-%Y")
+  #cd /var/www/html/competition-analysis/
+  
+fi

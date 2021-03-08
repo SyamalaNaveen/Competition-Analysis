@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /var/www/html/competition-analysis
+flask run --host=0.0.0.0  --port=5000 >>/var/log/abhi-comp-analaysis.log  2>&1 &

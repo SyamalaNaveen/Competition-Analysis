@@ -1,0 +1,37 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/competition-analysis
+    overwrite: yes
+permissions:
+  - object: /var/www/html/competition-analysis
+    pattern: "**"
+    owner: centos
+    group: centos
+    mode: 600
+    type:
+      - file
+  - object: /var/www/html/competition-analysis
+    owner: centos
+    group: centos
+    mode: 775
+    type:
+      - directory
+hooks:
+  BeforeInstall:
+    - location: deployment-scripts/extract_files
+      timeout: 600
+      runas: root
+  AfterInstall:
+    - location: deployment-scripts/copy_files
+      timeout: 600
+      runas: root
+  ApplicationStart:
+    - location: deployment-scripts/start_server
+      timeout: 600
+      runas: root
+  ApplicationStop:
+    - location: deployment-scripts/stop_server
+      timeout: 600
+      runas: root

@@ -1,0 +1,10 @@
+
+Below are the 5 tables are required.
+
+CREATE TABLE abhibus_operator_master_id(operator varchar(100),id int)
+CREATE TABLE redbus_operator_master_id(operator varchar(100),id int)
+CREATE TABLE abhibus_operators_data_datewise(operator varchar(100),pick_time varchar(25),date varchar(25),site varchar(20), rid int)
+CREATE TABLE redbus_operators_data_datewise(operator varchar(100),pick_time varchar(25),date varchar(25),site varchar(20), rid int)
+CREATE TABLE both_operators(operator varchar(100), no_of_services int, id int,site varchar(100))
+
+
